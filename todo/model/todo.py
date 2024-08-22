@@ -18,3 +18,14 @@ class Todo:
 class TodoBook:
     def __init__(self):
         self.todos: int = {}
+    
+    def add_todo(self, title: str, description:str) -> int:
+        id = len(self.todos) + 1
+        new_todo = Todo(code_id=id, title=title, description=description)
+        self.todos[id] = new_todo
+        return id
+    
+    def pending_todos(self)->list[Todo]:
+        return [todo for todo in self.todos.values() if not todo.completed]
+    
+ 
